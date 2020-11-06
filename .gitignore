@@ -1,0 +1,14 @@
+/bin/sigcheck.exe
+/bin/volatility3-masterbk/
+/bin/volatility3-master/
+/bin/autorunsc.exe
+/bin/$null
+/.idea/.gitignore
+/.idea/Columbo.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
+/dist
+/.idea/synopsys_code_sight_state.xml
+/bin/python/

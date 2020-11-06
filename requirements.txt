@@ -1,0 +1,11 @@
+colorama
+joblib
+numpy
+pandas
+pefile
+pyfiglet
+pyinstaller
+scikit-learn
+scipy
+termcolor
+openpyxl
