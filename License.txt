@@ -1,4 +1,6 @@
-**Columbo**
+MIT License
+
+Columbo
 
 Copyright 2020 Visma
 
