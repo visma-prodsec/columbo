@@ -100,8 +100,8 @@ def dll(process, df_dll):
     if dlls.empty:
         print('\n')
         print(Fore.YELLOW + process + ' DLLs or relevant data cannot be found.')
-        print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print('\n')
+        #print(Fore.YELLOW + '-' * 110)
         print(Fore.WHITE)
     else:
         print(Fore.YELLOW + 'Process ' + process + ' and its Dll association ')

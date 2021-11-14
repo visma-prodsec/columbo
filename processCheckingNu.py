@@ -30,16 +30,16 @@ def processes():
 
     """
     file = open(path2, 'r')
-    df = pd.read_csv(file, sep=",", delimiter="\t",
+    df = pd.read_csv(file, delimiter="\t",
                      names=["PID", "PPID", "ImageFileName", "Offset", "Threads", "Handles", "SessionId", "Wow64",
                             "CreateTime", "ExitTime"], header=None)
     file.close()
 
-    d_frame = pd.read_csv(path_to_process, delimiter="\t", sep=",", names=["PID", "Process", "Argu"], encoding='cp1252' ,header=None)
-    df_handles = pd.read_csv(handlesout, delimiter="\t", sep=",",
+    d_frame = pd.read_csv(path_to_process, delimiter="\t", names=["PID", "Process", "Argu"], encoding='cp1252' ,header=None)
+    df_handles = pd.read_csv(handlesout, delimiter="\t",
                              names=['PID', 'Process', 'Offset', 'HandleValue', 'Type', 'GrantedAccess', 'Name'],
                              header=None)
-    df_dll = pd.read_csv(dllout, delimiter="\t", sep=",", names=['PID', 'Process', 'Base', 'Size', 'Name', 'Path'],
+    df_dll = pd.read_csv(dllout, delimiter="\t", encoding='cp1252' ,names=['PID', 'Process', 'Base', 'Size', 'Name', 'Path'],
                          header=None)
 
     # print('\n')
@@ -459,7 +459,7 @@ def process_cmd_find(d_frame, process):
     """
     In relation to memory image. Search, identify, commands or paths in a form of suspicious or genuine.
     """
-    find_ = d_frame.loc[d_frame['PID'] == process]
+    find_ = d_frame.loc[d_frame['PID']== process]
     process_path_check = find_['Argu']
     process_path = find_['Argu'].to_string(index=False, header=False)
 
@@ -471,43 +471,43 @@ def process_cmd_find(d_frame, process):
         print('\n')
         print(Fore.YELLOW + 'Nothing relevant found - path nor command ')
         # print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print(Fore.YELLOW + '-' * 110)
     elif pd.DataFrame(process_path_check).isnull().values.any():
         print('\n')
         print(Fore.YELLOW + '->Nothing relevant found - path nor command ')
         # print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print(Fore.YELLOW + '-' * 110)
     elif re.search('Required memory', process_path):
         print('\n')
         print(Fore.YELLOW + 'No relevant commands found')
-        print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print('\n')
+        #print(Fore.YELLOW + '-' * 110)
     else:
         print_this = sec_model.predict(text)
         print_prob = sec_model.predict_proba(text) * 100
         print(Fore.WHITE + '\n')
         print('Possible process path or execution: ' + Fore.YELLOW + process_path)
         print('\n')
-        print(Fore.YELLOW + '-' * 110)
-        print('\n')
+        #print(Fore.YELLOW + '-' * 110)
+        #print('\n')
         if print_this == 1:
             print(
                 'Machine Learning model classifies ' + Fore.GREEN + ' ' + process_path + Fore.WHITE + ' to be '
                 + Fore.RED + ' suspicious.' + Fore.WHITE + ' Please consider its percentage scores shown below: ')
             print(pd.DataFrame(print_prob).to_string(index=False, header=True))
-            print('\n')
-            print(Fore.YELLOW + '-' * 110)
+            #print('\n')
+            #print(Fore.YELLOW + '-' * 110)
         elif print_this == 0:
             print(
                 Fore.WHITE + 'Machine Learning model classifies' + Fore.GREEN + ' ' + process_path + Fore.WHITE +
                 ' to be ' + Fore.GREEN + 'genuine' + Fore.WHITE +
                 ' Please consider its percentage scores shown below: ')
             print(pd.DataFrame(print_prob).to_string(index=False, header=True))
-            print('\n')
-            print(Fore.YELLOW + '-' * 110)
+            #print('\n')
+           #print(Fore.YELLOW + '-' * 110)
         else:
             print('No command to learn about')
-            print('\n')
+            #print('\n')
             print(Fore.YELLOW + '-' * 110)
 
     return 0
@@ -523,19 +523,19 @@ def forward_p(process, df):
     forwards = data[['ImageFileName', 'PPID', 'PID']]
     forward_pro = forwards.to_string(index=False, header=True)
     if forwards.empty:
-        print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print('\n')
+        #print(Fore.YELLOW + '-' * 110)
         print('\n')
         print(Fore.YELLOW + process + ' Does not execute other process(es) - i.e. is not a parent process.')
         print('\n')
         print(Fore.YELLOW + '-' * 110)
         print(Fore.WHITE)
     else:
-        print('\n')
-        print(Fore.YELLOW + '-' * 110)
+        #print('\n')
+        #print(Fore.YELLOW + '-' * 110)
         print('\n')
         print(Fore.YELLOW + process + ' is a parent process of the following process(es):')
-        print('\n')
+        #print('\n')
         print(Fore.WHITE)
         print(forward_pro)
         print('\n')

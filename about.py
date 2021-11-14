@@ -1,6 +1,7 @@
 import subprocess
 import os
-from run import user_input
+import run
+#from run import user_input
 from colorama import Fore
 
 
@@ -70,7 +71,10 @@ def about_columbo():
         'processes or not.\n'
         '-> It extracts, handles and dlls information of each process '
         'and presents them with the rest of the information. '
-        '\n\n')
+        '\n')
+
+    print(
+        Fore.YELLOW + 'However, all of the above steps in option 4 are automated.\n')
 
     subprocess.Popen(['notepad.exe', dir_path + r'\license.txt'])
 
@@ -78,4 +82,4 @@ def about_columbo():
 
     # print('\n')
 
-    return user_input()
+    return run.user_input()

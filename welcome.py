@@ -12,7 +12,7 @@ def welcome():
     print(Fore.GREEN + ascii_banner)
     print(Fore.GREEN + '\n                                                       Simplify your Computer Forensics')
     print(
-        Fore.YELLOW + '                                                    Alan Saied, Product Security -Visma')
+        Fore.YELLOW + '                                                                   Alan Saied ')
     print('                                                                 Version: Beta')
     print('                                                               Platform: Windows\n')
 

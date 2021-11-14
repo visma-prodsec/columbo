@@ -13,11 +13,11 @@ def user_assist(user_assi):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     user_binary = dir_path + r'\csvFiles\userBinary.csv'
 
-    # file = open(user_assi, 'r')
-    dfff = pd.read_csv(user_assi, delimiter="\t", sep=",", engine='python', error_bad_lines=False, header=None,
+
+    dfff = pd.read_csv(user_assi, delimiter="\t", engine='python', error_bad_lines=False, header=None,
                        names=['Hive Offset', 'Hive Name', 'Path', 'Last Write Time', 'Type  Name', 'ID', 'Count',
                               'Focus Count', 'Time Focused', 'Last Updated', 'Raw Data'])
-    # file.close()
+
 
     df = dfff['Type  Name'].dropna(axis=0)
 
